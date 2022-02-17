@@ -5,9 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        int capacity = 2;
-        int size = 0;
-        String[] toDoList = new String[capacity]; // реализация на основе массива (нельзя увеличить размер массива)
+        DynamicArray toDoList = new DynamicArray(2); // реализация на основе массива (нельзя увеличить размер массива)
         Scanner sc = new Scanner(System.in); // ввод данных в консоль
 
         int choice = 3;
@@ -17,13 +15,9 @@ public class Main {
             if (choice == 1) {
                 System.out.println("Enter new ToDo");
                 sc.nextLine(); // очистка буфера для работы сканнера
-                if (size>=capacity) {
-                    toDoList = growArray(toDoList); // размер ув-ся
-                    capacity = toDoList.length;
-                }
-                toDoList[size++] = sc.nextLine(); // запись в массив
+                toDoList.add(sc.nextLine());
             } else if (choice == 2) {
-                System.out.println(Arrays.toString(toDoList)); // вывод эл-ов массива
+                System.out.println(toDoList); // вывод эл-ов массива
             }
         } while (choice != 3);
     }
