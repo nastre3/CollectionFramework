@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class DynamicArray { // массив с вспомогательными переменными
     private int size;
-    private String[] data;
+    private Object[] data;
 
     public DynamicArray() {
         this(20);
@@ -10,18 +10,22 @@ public class DynamicArray { // массив с вспомогательными 
 
     // конструктор с начальной вместимостью
     public DynamicArray(int initialCapacity) { // параметр - начальная вместимость
-        data = new String[initialCapacity];
+        data = new Object[initialCapacity];
         size = 0;
     }
 
-    public void add(String value) {
+    public void add(Object value) {
         if (size>=data.length) {
             data = grow(data); // вызываем метод grow
         }
         data[size++] = value;
     }
 
-    private String[] grow(String[] oldArray) { // private - чтобы пользователь не мог сам изменить размер
+    public Object get(int index) { // запрашиваем эл-т по индексу
+        return data[index];
+    }
+
+    private Object[] grow(Object[] oldArray) { // private - чтобы пользователь не мог сам изменить размер
         return Arrays.copyOf(oldArray, oldArray.length*2); // 1 параметр - старый массив и 2 параметр - его размер
     }
 
