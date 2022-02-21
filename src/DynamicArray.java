@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class DynamicArray { // массив с вспомогательными переменными
+public class DynamicArray<E> { // массив с вспомогательными переменными; E - название дженерика
     private int size;
     private Object[] data;
 
@@ -14,15 +14,15 @@ public class DynamicArray { // массив с вспомогательными 
         size = 0;
     }
 
-    public void add(Object value) {
+    public void add(E value) {
         if (size>=data.length) {
             data = grow(data); // вызываем метод grow
         }
         data[size++] = value;
     }
 
-    public Object get(int index) { // запрашиваем эл-т по индексу
-        return data[index];
+    public E get(int index) { // запрашиваем эл-т по индексу
+        return (E) data[index];
     }
 
     private Object[] grow(Object[] oldArray) { // private - чтобы пользователь не мог сам изменить размер
