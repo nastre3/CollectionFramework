@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        DynamicArray<Car> transport = new DynamicArray<>(); // динамич.массив для хранения транспорта; вторая <> означает, что <Car>
+        CustomArrayList<Car> transport = new CustomArrayList<>(); // динамич.массив для хранения транспорта; вторая <> означает, что <Car>
         // подсказка "Raw use of parameterized class 'DynamicArray'" означает, что DynamicArray<Object> transport
         transport.add(new Car());
         transport.add(new Car());

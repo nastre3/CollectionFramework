@@ -1,16 +1,19 @@
 import java.sql.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
-        DynamicArray toDoList = new DynamicArray(2); // реализация на основе массива (нельзя увеличить размер массива)
+
+        new ArrayList<>()
+        DynamicStringArray toDoList = new DynamicStringArray(); // реализация на основе массива (нельзя увеличить размер массива)
         Scanner sc = new Scanner(System.in); // ввод данных в консоль
 
         int choice = 3;
         do {
-            System.out.println("1. Add to do\n2. Show all\n3. Exit");
+            System.out.println("1. Add to do\n2. Show all\n3. Delete item\n4.Exit");
             choice = sc.nextInt(); // считываем выбор пользователя из консоли
             if (choice == 1) {
                 System.out.println("Enter new ToDo");
@@ -18,8 +21,10 @@ public class App {
                 toDoList.add(sc.nextLine());
             } else if (choice == 2) {
                 System.out.println(toDoList); // вывод эл-ов массива
+            } else if (choice == 3) {
+                toDoList.remove(sc.nextInt()); // удаление эл-та массива
             }
-        } while (choice != 3);
+        } while (choice != 4);
     }
 
     public static String[] growArray(String[] oldArray) {
