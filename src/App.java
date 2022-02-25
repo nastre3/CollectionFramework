@@ -1,15 +1,18 @@
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class App {
 
     public static void main(String[] args) {
+        System.out.println("1.Use LinkedList\n2.Use ArrayList");
+        HashMap<String, String> map = new HashMap<>();
+        map.put("File", "Filename");
 
-        new ArrayList<>()
-        DynamicStringArray toDoList = new DynamicStringArray(); // реализация на основе массива (нельзя увеличить размер массива)
         Scanner sc = new Scanner(System.in); // ввод данных в консоль
+        CustomList<String> toDoList = switch(sc.nextLine()) {
+            case "1" -> new CustomLinkedList<>();
+            default -> new CustomArrayList<>(); // заранее выд-ся больше памяти. ArrayList идентичен классу Vector
+        };
 
         int choice = 3;
         do {

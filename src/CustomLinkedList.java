@@ -37,7 +37,7 @@ public class CustomLinkedList<E> implements CustomList<E> {
         }
         if (next !=null) { // для послед. эл-ов
             next.next = prev;
-            x.next = null;
+            x.next = null; // удаление лишней ссылки для помощи garbage collector
         }
         size--;
         return value; // возврат значения после удаления
@@ -63,5 +63,18 @@ public class CustomLinkedList<E> implements CustomList<E> {
             this.next = next;
             this.prev = prev;
         }
+    }
+
+    @Override
+    public String toString() {
+        // для отображения всего нужно пройтись по всем эл-ам
+        StringBuilder sb = new StringBuilder("{");
+        Node<E> cur = first;
+        while (cur!=null) {
+            sb.append(cur.item).append(","); // добавляем значение эл-та c запятой
+            cur = cur.next; // переносим указатель на след эл-т
+        }
+        sb.append("}");
+        return sb.toString();
     }
 }
